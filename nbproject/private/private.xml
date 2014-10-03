@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/AltaBar/web/resources/js/Controls.js</file>
+            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/AltaBar/web/layout/main.xhtml</file>
+            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/AltaBar/src/java/validations/ValidatorEmail.java</file>
+            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/AltaBar/src/java/validations/ValidatorEmpty.java</file>
+            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/AltaBar/src/java/beanRequest/MbRAltbClientes.java</file>
+            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/AltaBar/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Alex/Documents/NetBeansProjects/AltaBar/web/cliente/registroCliente.xhtml</file>
+        </group>
     </open-files>
 </project-private>

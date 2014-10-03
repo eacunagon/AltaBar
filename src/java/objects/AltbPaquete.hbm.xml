@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2014 11:43:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="objects.AltbPaquete" table="altb_paquete" catalog="altabar" optimistic-lock="version">
+        <id name="idPaquete" type="string">
+            <column name="ID_PAQUETE" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="desPaquete" type="string">
+            <column name="DES_PAQUETE" length="500" not-null="true" />
+        </property>
+        <property name="cmPaquete" type="string">
+            <column name="CM_PAQUETE" length="2000" not-null="true" />
+        </property>
+        <property name="linkImg" type="string">
+            <column name="LINK_IMG" length="2000" not-null="true" />
+        </property>
+        <property name="precio" type="java.lang.Float">
+            <column name="PRECIO" precision="12" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

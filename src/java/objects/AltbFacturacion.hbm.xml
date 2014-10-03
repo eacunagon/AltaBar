@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2014 11:43:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="objects.AltbFacturacion" table="altb_facturacion" catalog="altabar" optimistic-lock="version">
+        <composite-id name="id" class="objects.AltbFacturacionId">
+            <key-property name="idFact" type="string">
+                <column name="ID_FACT" length="50" />
+            </key-property>
+            <key-property name="idReserva" type="string">
+                <column name="ID_RESERVA" length="50" />
+            </key-property>
+        </composite-id>
+        <property name="totalFact" type="java.lang.Float">
+            <column name="TOTAL_FACT" precision="12" scale="0" />
+        </property>
+        <property name="fhCarga" type="date">
+            <column name="FH_CARGA" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

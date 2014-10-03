@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2014 11:43:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="objects.AltbArea" table="altb_area" catalog="altabar" optimistic-lock="version">
+        <id name="idArea" type="string">
+            <column name="ID_AREA" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="descArea" type="string">
+            <column name="DESC_AREA" length="500" not-null="true" />
+        </property>
+        <property name="linkImg" type="string">
+            <column name="LINK_IMG" length="2000" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2014 11:43:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="objects.AltbReserva" table="altb_reserva" catalog="altabar" optimistic-lock="version">
+        <id name="idReserva" type="string">
+            <column name="ID_RESERVA" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="idCliente" type="string">
+            <column name="ID_CLIENTE" length="50" not-null="true" />
+        </property>
+        <property name="idPaquete" type="string">
+            <column name="ID_PAQUETE" length="50" not-null="true" />
+        </property>
+        <property name="idMesa" type="string">
+            <column name="ID_MESA" length="50" not-null="true" />
+        </property>
+        <property name="deReserva" type="string">
+            <column name="DE_RESERVA" length="500" not-null="true" />
+        </property>
+        <property name="cmReserva" type="string">
+            <column name="CM_RESERVA" length="2000" not-null="true" />
+        </property>
+        <property name="fhCarga" type="date">
+            <column name="FH_CARGA" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

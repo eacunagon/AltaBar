@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 25, 2014 11:43:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="objects.AltbClientes" table="altb_clientes" catalog="altabar" optimistic-lock="version">
+        <id name="idCliente" type="string">
+            <column name="ID_CLIENTE" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="75" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="APELLIDO" length="75" not-null="true" />
+        </property>
+        <property name="EMail" type="string">
+            <column name="E_MAIL" length="50" not-null="true" />
+        </property>
+        <property name="celular" type="string">
+            <column name="CELULAR" length="8" not-null="true" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="SEXO" length="1" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="FECHA_NACIMIENTO" length="10" not-null="true" />
+        </property>
+        <property name="fhRegistro" type="date">
+            <column name="FH_REGISTRO" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

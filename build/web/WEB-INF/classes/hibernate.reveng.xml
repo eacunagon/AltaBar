@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="AltaBar"/>
+  <table-filter match-name="altb_reserva"/>
+  <table-filter match-name="altb_paquete"/>
+  <table-filter match-name="altb_reserva_clientes"/>
+  <table-filter match-name="altb_clientes"/>
+  <table-filter match-name="altb_area"/>
+  <table-filter match-name="altb_hsy"/>
+  <table-filter match-name="altb_mesas"/>
+  <table-filter match-name="altb_facturacion"/>
+  <table-filter match-name="altb_mesas_area"/>
+</hibernate-reverse-engineering>
