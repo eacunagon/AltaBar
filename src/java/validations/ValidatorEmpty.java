@@ -32,7 +32,7 @@ public class ValidatorEmpty implements Validator{
             label=htmlInputText.getLabel();        
         }
         if(value.toString().trim().equals("")){
-        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error",label+" Es un campo obligatorio"));
+        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error",label+" es un campo obligatorio"));
         }
 
     }

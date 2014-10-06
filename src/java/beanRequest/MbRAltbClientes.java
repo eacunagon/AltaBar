@@ -5,6 +5,7 @@
  */
 package beanRequest;
 
+import HibernateUtil.HibernateUtil;
 import classes.Encrypt;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -15,7 +16,8 @@ import daos.DaoAltbHsy;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import objects.AltbHsy;
-import org.primefaces.context.RequestContext;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 
 /**
@@ -33,39 +35,63 @@ public class MbRAltbClientes {
     private AltbHsy  hsy;
     private List <AltbClientes> listaClientes;
     private String txtContraseñaRepita;
+    private Session session;
+    private Transaction transaction;
     
     public MbRAltbClientes() {
       this.cliente = new AltbClientes();
       this.hsy = new AltbHsy();
     }
     
-    public String addClient() 
+    public void addClient() throws Exception 
     {
+        session=null;
+        transaction=null;
         try {
+            session =HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
             if(!txtContraseñaRepita.equals(hsy.getCu5479()))
             {
-            FacesContext.getCurrentInstance().addMessage(null,
-            new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error","Las contraseñas no coinciden."));
-            return "/cliente/registroCliente";
-            }
-    
-        DaoAltbClientes daoClientes = new DaoAltbClientes();
-        daoClientes.insert(this.cliente);    
+                FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error","Las contraseñas no coinciden."));
+                return ;
+            }    
+            DaoAltbClientes daoClientes = new DaoAltbClientes();
+            if(daoClientes.getItemByEmail(session, cliente.getEMail())!=null)
+            {
+                FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error","El usuario ya se encuentra registrado en el sistema"));
+                return ;
+            } 
+        //insertamos el cliente    
+        daoClientes.insert(session,cliente);    
+        //Encriptamos los campos para guardar en la tabla de seguridad
         hsy.setCu5479(Encrypt.sha512(hsy.getCu5479()));
         hsy.setIu4789(Encrypt.sha512(cliente.getIdCliente()));
         hsy.setUu7879(Encrypt.sha512(cliente.getEMail()));
+        //se instancia el dao para la tabla de seguridad y se hace el insert
         DaoAltbHsy daoHsyu = new DaoAltbHsy();    
-        daoHsyu.insert(hsy);
+        daoHsyu.insert(session,hsy);
+        //se hace commit de la transaction
+        transaction.commit();
         FacesContext.getCurrentInstance().addMessage(null,
         new FacesMessage(FacesMessage.SEVERITY_INFO,"Exito!","El registro se ha realizado correctamente"));
         
         }
-        catch(Exception ex){
+        catch(ExceptionInInitializerError ex){
+           if(transaction!=null)transaction.rollback();
+           
            FacesContext.getCurrentInstance().addMessage(null,
-           new FacesMessage(FacesMessage.SEVERITY_FATAL,"Error!",ex.getMessage()));
+           new FacesMessage(FacesMessage.SEVERITY_FATAL,"Error!","Porfavor contacte al administrador "+ex.getMessage()));
         }
-    RequestContext.getCurrentInstance().execute("cleanForm('frmRegistrarCliente')");
-    return "/cliente/registroCliente";
+        finally{
+        if(session!=null)session.close();
+        }
+    //RequestContext.getCurrentInstance().execute("cleanForm('frmRegistrarCliente')");
+        cliente = new AltbClientes();
+        hsy = new AltbHsy();
+        cliente.setSexo("M");
+   
     }
 
     public AltbHsy getHsyu() {

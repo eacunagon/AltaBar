@@ -16,13 +16,19 @@
 
     <h:body>
 
-        <div id="top">
+        <div id="top" >
                 <h:form>
-                <p:graphicImage value="/resources/img/altabar.jpeg" title="COMPANY CREATION" />     
-        <p:menubar>
+                <p:graphicImage value="/resources/img/altabar.jpeg" title="COMPANY CREATION" /> 
+                <div id="sesionUsuario">
+                   <div>
+                       <p:outputLabel value="#{mbSLogin.EMail==null ? 'Anónimo' : mbSLogin.EMail}"></p:outputLabel>
+                    <h:commandButton value="Cerrar Sesion" action="#{mbSLogin.logOut()}" > </h:commandButton>
+                   </div>
+                </div>
+        <p:menubar >
             <p:menuitem value="Inicio" outcome="/index"/>
                 <p:submenu label="Clientes">
-                    <p:menuitem value="Inicio Sesión" url="http://www.google.com" />
+                    <p:menuitem value="Inicio Sesión" outcome="/cliente/login" />
                     <p:menuitem value="Registro" outcome="/cliente/registroCliente" />
                     <p:menuitem value="Historial" url="http://mail.yahoo.com" />
                 </p:submenu>
@@ -34,7 +40,7 @@
     
             <div>
                 <div id="right">
-                    <ui:insert name="right">Right</ui:insert>
+                    <ui:insert name="right"></ui:insert>
                 </div>
                 <div id="content" class="right_content">
                     <ui:insert name="content">Content</ui:insert>

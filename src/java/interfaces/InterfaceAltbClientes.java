@@ -7,15 +7,17 @@
 package interfaces;
 import java.util.List;
 import objects.AltbClientes;
+import org.hibernate.Session;
 
 /**
  *
  * @author Alex
  */
 public interface InterfaceAltbClientes {
-    public boolean insert(AltbClientes cliente) throws Exception;    
-    public List<AltbClientes> getList () throws Exception;
-    public AltbClientes getItem (String idCliente) throws Exception;
-    public boolean update(AltbClientes cliente) throws Exception;
+    public boolean insert(Session session, AltbClientes cliente) throws Exception;    
+    public List<AltbClientes> getAll (Session session) throws Exception;
+    public AltbClientes getItem (Session session,String idCliente) throws Exception;
+    public boolean update(Session session, AltbClientes cliente) throws Exception;
+    public AltbClientes getItemByEmail(Session session, String eMail) throws Exception;
    
 }

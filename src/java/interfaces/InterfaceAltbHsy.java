@@ -7,14 +7,15 @@ package interfaces;
 
 import java.util.List;
 import objects.AltbHsy;
+import org.hibernate.Session;
 
 /**
  *
  * @author Alex
  */
 public interface InterfaceAltbHsy {
-    public boolean insert(AltbHsy cliente) throws Exception;    
+    public boolean insert(Session session, AltbHsy cliente) throws Exception;    
     public List<AltbHsy> getList () throws Exception;
-    public AltbHsy getItem (String idCliente) throws Exception;
+    public AltbHsy getItemById (Session session,String idCliente ) throws Exception;
     public boolean update(AltbHsy cliente) throws Exception;
 }

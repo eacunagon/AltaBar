@@ -1,0 +1,18 @@
+10/3/2014 Versión 0.1
+
+*Base de datos
+Base de datos creada
+Configuración del Hibernate realizada
+Conexión a base de datos asegurada
+
+*Formulario Registro de usuario
+Formulario de registro de usuario agregado
+Validación de campos vació realizadas
+Validación de contraseña necesaria realizada
+Limpia campos al agregar registro 
+
+*Diseño General
+Background modificado para mostrar un diseño con sombras
+
+*Ventana Principal
+Agregado galería de imagen con java script para pasar las imágenes 

@@ -21,54 +21,65 @@
             <ui:define name="content">                 
                 
              
-                <h:form id="frmRegistrarCliente" class="inputForms">    
-              
-                     <p:panel id="basic" header="Datos Basicos">
-                    <h:panelGrid id="regisro"  columns="2" cellpadding="5">
+                <h:form id="frmRegistrarCliente" class="inputForms">   
+                    <p:growl id="generalMessage" showDetail="true" sticky="false"/>
+                    <p:panel id="basic" header="Datos Basicos">
+                     <h:panelGrid id="regisro"  columns="3" cellpadding="5">
                         <p:outputLabel value="Nombre:" for="txtNombre"/>
                         <p:inputText id="txtNombre" value="#{mbRAltbClientes.getCliente().nombre}"> 
                             <f:validator validatorId="ValidatorEmpty" ></f:validator>
                         </p:inputText>
+                        <p:message for="txtNombre"/>
                         <p:outputLabel value="Apellido:" for="txtApellido"/>
                         <p:inputText id="txtApellido" value="#{mbRAltbClientes.getCliente().apellido}"> 
                             <f:validator validatorId="ValidatorEmpty" ></f:validator>
-                        </p:inputText>                        
+                        </p:inputText>  
+                            <p:message for="txtApellido"/>
                         <p:outputLabel value="E-mail:" for="txtEmail"/>
-                        <p:inputText id="txtEmail"                           
+                        <p:inputText id="txtEmail" title="Ejemplo: sucorreo@gmail.com"                           
                             value="#{mbRAltbClientes.getCliente().EMail}"> 
                             <f:validator validatorId="ValidatorEmpty" ></f:validator>
-                        </p:inputText>                      
+                            <f:validator validatorId="ValidatorEmail" ></f:validator>
+                        </p:inputText>    
+                        <p:message for="txtEmail"/>
                         <p:outputLabel value="Celular:"  for="txtCelular"/>
                         <p:inputMask id="txtCelular" value="#{mbRAltbClientes.getCliente().celular}" mask="9999-9999"> 
                             <f:validator validatorId="ValidatorEmpty" ></f:validator>
+                             
                         </p:inputMask>
+                        <p:message for="txtCelular"/>
                         <p:outputLabel value="Fecha de nacimiento:"  for="txtCalFeNacimiento"/>
-                        <p:calendar id="txtCalFeNacimiento" value="#{mbRAltbClientes.getCliente().fechaNacimiento}"  pattern="dd-MM-yyyy" mask="true"  showOn="button" />
-                        <p:outputLabel value="Sexo: " for="txtRadioSexo" />
+                        <p:calendar id="txtCalFeNacimiento"  title="Ejemplo: dd/MM/yyyy"  value="#{mbRAltbClientes.getCliente().fechaNacimiento}"  pattern="dd/MM/yyyy" mask="true"  showOn="button" />
+                        <p:message for="txtCalFeNacimiento"/>
+                        <p:outputLabel value="Sexo: " for="txtRadioSexo" />                        
                         <p:selectOneRadio id="txtRadioSexo" value="#{mbRAltbClientes.getCliente().sexo}">
                             <f:selectItem itemLabel="Masculino" itemValue="M"/>
                             <f:selectItem itemLabel="Femenino" itemValue="F"/>                     
-                            </p:selectOneRadio>                                       
-                        <p:spacer height="5" />
-                        <p:separator />                                                  
-                    
-                     <p:outputLabel  value="Contraseña:" for="txtPassword1" />
-                     <p:password id="txtPassword1" value="#{mbRAltbClientes.getHsyu().cu5479}"  label="Contraseña 1" required="true" feedback="true" inline="true" > 
-                            <f:validator validatorId="ValidatorEmpty" ></f:validator>
-                        </p:password>        
-                        <p:outputLabel  value="Confirme:" for="txtPassword2" />
-                        <p:password id="txtPassword2" value="#{mbRAltbClientes.txtContraseñaRepita}" label="Contraseña2" required="true" > 
+                            </p:selectOneRadio>
+                      
+                     
+                        <h:panelGroup></h:panelGroup>
+                        <p:outputLabel  value="Contraseña:" for="txtPassword1" />
+                        <p:password id="txtPassword1" value="#{mbRAltbClientes.getHsyu().cu5479}"  label="Contraseña1"  feedback="true" inline="true" > 
                             <f:validator validatorId="ValidatorEmpty" ></f:validator>
                         </p:password>   
-                        <p:commandButton action="#{mbRAltbClientes.addClient()}" value="Save" />                      
-                       </h:panelGrid> 
+                        <p:message for="txtPassword1"/>
+                        <p:outputLabel  value="Confirme:" for="txtPassword2" />
+                        <p:password id="txtPassword2" value="#{mbRAltbClientes.txtContraseñaRepita}" label="Contraseña2" feedback="true" inline="true"  > 
+                            <f:validator validatorId="ValidatorEmpty" ></f:validator>
+                        </p:password>
+                        <p:message for="txtPassword2"/>
+                        <h:panelGroup></h:panelGroup>
+                        <p:commandButton actionListener="#{mbRAltbClientes.addClient()}" value="Save" update ="frmRegistrarCliente"/>                      
+                        </h:panelGrid> 
+                       
                      </p:panel>
-                  <p:messages id="message" showDetail="true" autoUpdate="true" closable="true"/> 
+                  
                 </h:form>
                 
             </ui:define>
             <ui:define name="bottom">
-                bottom
+                
             </ui:define>
 
         </ui:composition>

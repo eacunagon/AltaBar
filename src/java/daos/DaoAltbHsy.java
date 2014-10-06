@@ -5,12 +5,11 @@
  */
 package daos;
 
-import HibernateUtil.HibernateUtil;
 import interfaces.InterfaceAltbHsy;
 import java.util.List;
 import objects.AltbHsy;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  *
@@ -19,16 +18,8 @@ import org.hibernate.Transaction;
 public class DaoAltbHsy implements InterfaceAltbHsy{
  private  Session session;
     @Override
-    public boolean insert(AltbHsy hsy) throws Exception {
-         try {
-        session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(hsy);
-        transaction.commit();
-        session.close();
-        } catch (Exception ex){
-        String error = ex.getMessage();
-        }
+    public boolean insert(Session session, AltbHsy hsy) throws Exception {
+       session.save(hsy);       
        return true;
     }
 
@@ -38,8 +29,12 @@ public class DaoAltbHsy implements InterfaceAltbHsy{
     }
 
     @Override
-    public AltbHsy getItem(String idCliente) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public AltbHsy getItemById(Session session, String id) throws Exception {
+        String hql="from AltbHsy where uu7879=:id";
+        Query query=session.createQuery(hql);
+        query.setParameter("id", id);        
+        AltbHsy hsy=(AltbHsy) query.uniqueResult();        
+        return hsy;
     }
 
     @Override
