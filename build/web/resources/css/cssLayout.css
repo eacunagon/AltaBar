@@ -1,15 +1,17 @@
 
-#sesionUsuario{
+#sesionUsuario{  
     position: fixed;
     right: 10px;
-    top:15px;
+    top:35px;
     color: silver;
 }
 #top {
     background-color: black;
-    position: relative;    
+    position: fixed;    
     padding: 0px;
-    margin: 0px 0px 10px 0px;
+    z-index: 1000;
+    min-width: 100%;
+    margin-top: -135px;
 }
 
 #bottom {
@@ -30,9 +32,13 @@
     width: 150px;
 }
 
+
+
 .center_content {
     position: relative;    
     padding: 5px;
+    margin-top: 135px;
+    margin-left: 40px;
 }
 
 .left_content {
@@ -44,6 +50,10 @@
 .right_content {
     padding: 5px;
     margin: 0px 70px 0px 70px;
+    margin-bottom: 70px;
+    margin-right: 70px;
+    margin-top: 135px;
+    
     //  margin: 0px 170px 0px 170px;
 }
 

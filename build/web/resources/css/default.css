@@ -10,6 +10,16 @@ html{
   
 }
 
+  .header {
+        color:#36A0FF;
+        font-size:27px;
+        padding:10px;
+    }
+    .bigicon {
+        font-size:35px;
+        color:#36A0FF;
+    }
+
 .bs-docs-header {
 margin-bottom: 40px;
 font-size: 20px;
@@ -34,37 +44,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endC
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
-  padding-bottom: 40px;
-  color: #5a5a5a;
-}
-
 
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
-.navbar-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 20;
-}
-
-/* Flip around the padding for proper display in narrow viewports */
-.navbar-wrapper > .container {
-  padding-right: 0;
-  padding-left: 0;
-}
-.navbar-wrapper .navbar {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.navbar-wrapper .navbar .container {
-  width: auto;
-}
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -74,6 +58,9 @@ body {
 .carousel {
   height: 500px;
   margin-bottom: 60px;
+  margin-right: 30px;
+ 
+
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {

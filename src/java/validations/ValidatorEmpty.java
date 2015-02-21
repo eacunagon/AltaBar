@@ -7,6 +7,7 @@ package validations;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.html.HtmlInputText;
+import javax.faces.component.html.HtmlInputTextarea;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
@@ -24,12 +25,29 @@ public class ValidatorEmpty implements Validator{
     public void validate(FacesContext context, UIComponent component, Object value) 
             throws ValidatorException {
         String label;
-        HtmlInputText htmlInputText = ( HtmlInputText) component;
-        if(htmlInputText.getLabel()==null||htmlInputText.getLabel().trim().equals("")){
-            label = htmlInputText.getId();
+       
+      
+       
+         if(component instanceof  HtmlInputTextarea){
+         HtmlInputTextarea a = ( HtmlInputTextarea) component;
+            if(a.getLabel()==null||a.getLabel().trim().equals("")){
+            label = a.getId();
         }
         else{
-            label=htmlInputText.getLabel();        
+            label=a.getLabel();        
+        }
+        if(value.toString().trim().equals("")){
+        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error",label+" es un campo obligatorio"));
+        }         
+        }
+         HtmlInputText  htmlInput = (HtmlInputText) component;
+        
+         
+        if(htmlInput.getLabel()==null||htmlInput.getLabel().trim().equals("")){
+            label = htmlInput.getId();
+        }
+        else{
+            label=htmlInput.getLabel();        
         }
         if(value.toString().trim().equals("")){
         throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error",label+" es un campo obligatorio"));

@@ -22,7 +22,7 @@
    
     <session-config>
         <session-timeout>
-            30
+            10
         </session-timeout>
     </session-config>
     <welcome-file-list>
@@ -33,7 +33,15 @@
         <mime-type>application/x-font-woff</mime-type>
          </mime-mapping>
    
-    
+    <context-param>
+        <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+        <param-value>6Lcs4PsSAAAAAIxLgJznVKC5jPfdfzg3tmuiUOhA</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+        <param-value>6Lcs4PsSAAAAAHbs5DNN5ZOXzGqDIbQvzmoAw5Oa</param-value>
+    </context-param>
      <context-param>
     <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
     <param-value>xhtml</param-value>

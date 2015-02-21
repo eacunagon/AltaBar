@@ -20,6 +20,7 @@ import objects.AltbClientes;
 import objects.AltbHsy;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -40,13 +41,15 @@ public class MbSLogin implements Serializable{
     private Transaction transaction;
 
     public MbSLogin() {
+//        HttpSession miSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+//        miSession.setMaxInactiveInterval(10);
     }
      
     public String logIn()
     {
         this.session=null;
         this.transaction=null;
-        
+         boolean loggedIn = false;  
         try
         {
             DaoAltbClientes daoTUsuario=new DaoAltbClientes();
@@ -57,25 +60,28 @@ public class MbSLogin implements Serializable{
             AltbClientes cliente=daoTUsuario.getItemByEmail(session, EMail);
             AltbHsy hsy=daoHsyu.getItemById(session, Encrypt.sha512(EMail));
             
-            if(cliente!=null& hsy!=null)
+            if(cliente!=null&& hsy!=null)
             {
                 if(hsy.getCu5479().equals(Encrypt.sha512(this.pss)))
                 {
-                    HttpSession httpSession=(HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-                    httpSession.setAttribute("correoElectronico", this.EMail);
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito!", "Sesión iniciada"));
-                    return "/index";
+                    
+                 RequestContext context = RequestContext.getCurrentInstance();
+                 FacesMessage message = null;                                    
+                 loggedIn = true;                        
+                 context.addCallbackParam("loggedIn", loggedIn);
+                 HttpSession httpSession=(HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+                 httpSession.setAttribute("eMail", this.EMail);
+                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito!", "Sesión iniciada"));
+                 return "/index";
                 }
-            }
-            
+            }   
+            loggedIn = false;   
             transaction.commit();
-            
             EMail=null;
-            pss=null;
-            
+            pss=null; 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de acceso:", "Usuario o contraseña incorrecto"));
-            
-            return "/login";
+         
+            return "/index";
             
         }
         catch(Exception ex)
@@ -102,10 +108,9 @@ public class MbSLogin implements Serializable{
     {
         this.EMail=null;
         this.pss=null;
-        
-        HttpSession httpSession=(HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-        httpSession.invalidate();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atención:", "Sesión cerrada"));
+        HttpSession httpSession=(HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);         
+        httpSession.invalidate();
         return "/index";
     }
     

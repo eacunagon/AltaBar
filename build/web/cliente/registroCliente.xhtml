@@ -23,7 +23,7 @@
              
                 <h:form id="frmRegistrarCliente" class="inputForms">   
                     <p:growl id="generalMessage" showDetail="true" sticky="false"/>
-                    <p:panel id="basic" header="Datos Basicos">
+                    <p:panel id="basic"  header="Datos Basicos">
                      <h:panelGrid id="regisro"  columns="3" cellpadding="5">
                         <p:outputLabel value="Nombre:" for="txtNombre"/>
                         <p:inputText id="txtNombre" value="#{mbRAltbClientes.getCliente().nombre}"> 
@@ -70,11 +70,9 @@
                         </p:password>
                         <p:message for="txtPassword2"/>
                         <h:panelGroup></h:panelGroup>
-                        <p:commandButton actionListener="#{mbRAltbClientes.addClient()}" value="Save" update ="frmRegistrarCliente"/>                      
-                        </h:panelGrid> 
-                       
-                     </p:panel>
-                  
+                        <p:commandButton actionListener="#{mbRAltbClientes.addClient()}" value="Registrar" update ="frmRegistrarCliente"/>
+                        </h:panelGrid>                        
+                     </p:panel>                  
                 </h:form>
                 
             </ui:define>

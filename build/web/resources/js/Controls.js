@@ -9,3 +9,7 @@ function cleanForm(idForm){
     
     document.getElementById(idForm).reset();
 }
+
+function showNotificationBar(idNotfication){
+    document.getElementById(idNotfication).show();
+}

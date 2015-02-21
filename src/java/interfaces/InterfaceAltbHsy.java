@@ -16,6 +16,6 @@ import org.hibernate.Session;
 public interface InterfaceAltbHsy {
     public boolean insert(Session session, AltbHsy cliente) throws Exception;    
     public List<AltbHsy> getList () throws Exception;
-    public AltbHsy getItemById (Session session,String idCliente ) throws Exception;
+    public AltbHsy getItemById (Session session,String idMesa ) throws Exception;
     public boolean update(AltbHsy cliente) throws Exception;
 }

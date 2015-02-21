@@ -16,3 +16,16 @@ Background modificado para mostrar un diseño con sombras
 
 *Ventana Principal
 Agregado galería de imagen con java script para pasar las imágenes 
+
+
+10/6/2014 Versión 0.1.5
+
+*Formulario Registro Usuario
+Validación para usuario ya existente
+Validación para formato de email
+Tooltip para fecha
+Tool tip para email
+
+*Ventana principal
+Formato y diseño listo para agregar imagenes finales
+
